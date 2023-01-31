@@ -1,7 +1,7 @@
 ---
 title: "Lab 06 - Ugly charts and Simpson's paradox"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Lindsay Stall"
+date: "1/31/23"
 output: github_document
 ---
 
@@ -13,19 +13,43 @@ library(dsbox)
 library(mosaicData) 
 ```
 
+```{r}
+library(usethis)
+use_git_config(user.name = "Lindsay Stall", 
+               user.email = "stallm21@wfu.edu")
+```
+
+```{r}
+staff <- read_csv("data/instructional-staff.csv")
+```
+```{r}
+staff_long <- staff %>%
+  pivot_longer(cols = -faculty_type, names_to = "year") %>%
+  mutate(value = as.numeric(value))
+```
+
+```{r}
+staff_long
+```
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r}
+staff_long %>%
+  ggplot(aes(x = year,
+             y = value,
+             group = faculty_type,
+             color = faculty_type,)) +
+  labs(
+    x = "Years",
+    y = "Faculty type",
+    title = "Faculty Type by Year"
+  ) +
+  geom_line()
+```
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+I would create 2 groups: one for part-time and one for full time to make the rates of employment between the groups easier to compare. 
 
 ### Exercise 3
 
