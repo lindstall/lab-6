@@ -80,6 +80,50 @@ the rates of employment between the groups easier to compare.
 
 ### Exercise 3
 
-…
+``` r
+fisheries <- read_csv("data/fisheries.csv")
+```
 
-Add exercise headings as needed.
+    ## Rows: 216 Columns: 4
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (1): country
+    ## dbl (3): capture, aquaculture, total
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+fisheries_long <- fisheries %>%
+  pivot_longer(cols = -country, names_to = "totals") %>%
+  filter(totals %in% c("capture", "aquaculture")) %>%
+  mutate(value = as.numeric(value))
+```
+
+``` r
+fisheries_long %>%
+  filter(country %in% c("China", "Indonesia", "India", "United States", "Russia", "Peru", "Vietnam")) %>%
+  ggplot(aes(fill = totals, y=value, x=country)) +
+  labs(
+    x = "Countries",
+    y = "Tons of Fish",
+    title = "Tons of Fish Produced by Top Ten Fish-Producing Countries"
+  ) +
+  geom_bar(position="stack", stat="identity")
+```
+
+![](lab-06_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+### Exercise 3
+
+### Exercise 3
+
+### Exercise 3
+
+### Exercise 3
+
+### Exercise 3
+
+### Exercise 3
+
+### Exercise 3

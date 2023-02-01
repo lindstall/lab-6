@@ -53,6 +53,58 @@ I would create 2 groups: one for part-time and one for full time to make the rat
 
 ### Exercise 3
 
-...
+```{r}
+fisheries <- read_csv("data/fisheries.csv")
+```
+```{r}
+fisheries_long <- fisheries %>%
+  pivot_longer(cols = -country, names_to = "totals") %>%
+  filter(totals %in% c("capture", "aquaculture")) %>%
+  mutate(value = as.numeric(value))
+```
 
-Add exercise headings as needed.
+```{r}
+fisheries_long %>%
+  filter(country %in% c("China", "Indonesia", "India", "United States", "Russia", "Peru", "Vietnam")) %>%
+  ggplot(aes(fill = totals, y=value, x=country)) +
+  labs(
+    x = "Countries",
+    y = "Tons of Fish",
+    title = "Tons of Fish Produced by Top Ten Fish-Producing Countries"
+  ) +
+  geom_bar(position="stack", stat="identity")
+```
+
+
+### Exercise 3
+
+
+
+
+### Exercise 3
+
+
+
+
+
+### Exercise 3
+
+
+
+
+### Exercise 3
+
+
+
+
+### Exercise 3
+
+
+
+
+### Exercise 3
+
+
+
+
+### Exercise 3
