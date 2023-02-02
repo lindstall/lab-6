@@ -138,7 +138,7 @@ experiment? Why? Observational because it is a survey and the outcomes
 were dead and alive.
 
 How many observations are in this dataset? What does each observation
-represent? 1314 observation
+represent? 1314 observation, each observation is a person surveyed.
 
 How many variables are in this dataset? What type of variable is each?
 Display each variable using an appropriate visualization. 3 variables:
@@ -169,7 +169,8 @@ geom_bar()
 ```
 
 ![](lab-06_files/figure-gfm/unnamed-chunk-14-1.png)<!-- --> 68% of Non
-smokers are alive 76% of smokers are alive This was not what I expected.
+smokers are alive 76% of smokers are alive This was not what I expected,
+as I was expecting more dead smokers.
 
 ### Exercise 3
 
@@ -207,3 +208,7 @@ facet_wrap(~age_cat)+geom_bar()
 ```
 
 ![](lab-06_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+
+The proportion of alive smokers in the 65+ category is very small. In
+the 18-44 and 45-64 categories, there is a higher proportion dead people
+that are smokers than non-smokers.
